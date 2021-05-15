@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <title>Reaction Tester</title>
+    <style>
+        .centre{
+            text-align: center;
+            text-decoration-style: solid;
+            font-weight: 100;
+        }
+        body{
+            background-color: bisque;
+        } 
+        .test {
+            
+         cursor:url(http://www.rw-designer.com/cursor-extern.php?id=116484), auto;
+         }    
+    </style>
+</head>
+
+<body>
+    <h1 class="centre">Test Your Reaction!</h1>
+    <h2 class="centre">Smash the hamsters as quickly as you can!</h2>
+    <h1 class="centre">Your time: <span id="timeTaken"></span></h1>
+    <div class="test" ><img src="ham.jpg" id="ham"></div>
+    <script type="text/javascript">
+            
+        var start = new Date().getTime();
+        
+        function Appear() {
+
+            var top = Math.random()*600;
+            var left =Math.random()*1200;
+            
+            document.getElementById("ham").style.marginTop = top + "px";
+            document.getElementById("ham").style.marginLeft = left + "px";
+            
+            document.getElementById("ham").style.display = "block";
+            start = new Date().getTime();
+
+        }
+        
+        function appearAfterDelay() {
+            
+            setTimeout(Appear, Math.random() * 2000);
+            
+        }
+        
+        appearAfterDelay();
+        
+        document.getElementById("ham").onclick = function() {
+            
+            document.getElementById("ham").style.display = "none";
+            
+            var end = new Date().getTime();
+            
+            var timeTaken = (end - start) / 1000;
+            
+            document.getElementById("timeTaken").innerHTML = timeTaken + "s";
+            
+            appearAfterDelay();
+            
+        }
+        
+    </script>
+    
+
+
+</body>
+</html>
